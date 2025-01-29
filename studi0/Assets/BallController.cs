@@ -3,8 +3,8 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
 
-    public Rigidbody sphereRigidbody;
-    public float ballSpeed = 2f;
+    [SerializeField] private Rigidbody sphereRigidbody;
+    [SerializeField] private float ballSpeed = 2f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,7 +13,7 @@ public class BallController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
     
     Vector2 inputVector = Vector2.zero; // intialize our input vector
@@ -43,5 +43,10 @@ public class BallController : MonoBehaviour
     Debug.Log("Resultant 3D Vector: " + inputXZPlane);
     sphereRigidbody.AddForce(inputXZPlane * ballSpeed);
 
+    } */
+
+    public void MoveBall(Vector2 input){
+        Vector3 inputXZPlane = new Vector3(input.x, 0, input.y);
+        sphereRigidbody.AddForce(inputXZPlane * ballSpeed);
     }
 }
